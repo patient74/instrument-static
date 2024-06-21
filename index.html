@@ -6,7 +6,7 @@
     <title>Instrument Details</title>
     <style>
       body {
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
         /* background-color: rgba(228, 199, 199, 0.192); */
       }
         .grid-container {
@@ -30,6 +30,7 @@
         padding: 5px;
         text-align: left;
       }
+
       .grid-item h2 {
         background: linear-gradient(to right, #4568dc, #b06ab3);
         color: white;
@@ -41,24 +42,40 @@
         font-size: 1.2rem;
         margin-bottom: 20px;
       }
+
       .header {
         grid-area: header;
       }
   
       .basic {
         grid-area: basic;
-        font-size: 20px;
+        /* font-size: 20px; */
       }
+
+      .basic-details-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        grid-gap: 10px; /* Adjust spacing between columns */
+     }
+
+     .basic-left {
+        grid-column: 1; /* Left column */
+      }
+
+      .basic-right {
+        grid-column: 2; /* Right column */
+      }
+
   
       .facility {
         grid-area: facility;
       }
 
       .facility-details-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    grid-gap: 10px; /* Adjust spacing between columns */
-}
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        grid-gap: 10px; /* Adjust spacing between columns */
+      }
 
 .facility-left {
     grid-column: 1; /* Left column */
@@ -156,7 +173,7 @@ table td:last-child {
 
 table tr {
   background-color: white; /* Background color for rows */
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   display: block; /* Display rows as block elements */
   margin-bottom: 20px; /* Add margin between rows */
 }
@@ -229,18 +246,16 @@ table tr {
       </div>
     </div>
     <div class="grid-item basic">
+      <div class="basic-details-grid">
+        <div class="basic-left">
       <table style="border: none;">
         <tr style="border: none;">
           <td>Facility Name</td>
-          <td>Environmental Scanning Electron Microscope facility</td>
+          <td style="color:#d422e4b7; font-weight: bold;">Environmental Scanning Electron Microscope facility</td>
         </tr>
         <tr style="border: none;">
           <td>Facility Status</td>
           <td id="facilityStatus">Working</td>
-        </tr>
-        <tr style="border: none;">
-          <td>Owner</td>
-          <td>Institute Central Research Facility (ICRF)</td>
         </tr>
         <tr style="border: none;">
           <td>Make and Model</td>
@@ -255,6 +270,38 @@ table tr {
           <td>June 2019</td>
         </tr>
       </table>
+      </div>
+      <div class="basic-right">
+      <table style="border: none;">
+        <tr style="border: none;">
+          <td style="background: linear-gradient(to right, #4568dc, #b06ab3);
+          color: white;
+          padding: 12px 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          text-transform: uppercase;">
+          
+          Specifications
+        </td>
+          <td>
+          <ol>
+            <li>Standard Frequency (X band) - 8.75-9.65 GHz</li>
+            <li>Sensitivity - 7x10^9 spins/0.1mT</li>
+            <li>Resolution - 2.35(micro)T or better</li>
+            <li>Temperature study - Any temp. from +200°C to liquid nitrogen temp.</li>
+            <li>Available accessories:
+                <ul>
+                    <li>Aqueous cell</li>
+                    <li>Sample Angular Rotation device</li>
+                    <li>Electrochemical cell</li>
+                    <li>UV irradiation</li>
+                    <li>Sample mixing cell</li>
+                </ul>
+            </li>
+        </ol>
+        </td>
+        </table>
+      </div>
+    </div>
     </div>
     <div class="grid-item booking">
       <h2>Booking details</h2>
@@ -275,17 +322,23 @@ table tr {
           </td>
         </tr>
         <tr id="collapseRow">
-          <td onclick="toggleInstructions()">Instruction for registration and data collection <span class="ellipsis">...</span></td>
-          <td style="display: none;">
+          <td>Instruction for registration and data collection</td>
+          <td>
             <ol>
               <li>Clearly mention state the model of ESR Spectrometer for your sample analysis.</li>
               <li>Analysis charges would vary depending on model selection. Relevant charges are given under each model</li>
               <li>Clearly state the type of analysis required.<br>Powder/Solution and also RT/77K<br>For solution sample suggest name of solvent.</li>
-              <li>Experiments can be carried out at ambient temperature, liquid nitrogen temperature and most of the temperatures between liquid nitrogen temperature and 200°C.</li>
-              <li>Experiments can be carried out with samples in liquid, solid or gaseous form, which includes single crystals, metal alloys, liquid crystals, organic radicals, polymers, glasses, powders, triplets, polyradicals, conduction electrons, drugs, rare-earths, enzymes, proteins and gases.</li>
-              <li>Provide a minimum of 25-50 mg of solid sample in powder form.</li>
-              <li>Provide a minimum of 2-3 ml of liquid sample.</li>
             </ol>
+            <span class="ellipsis" onclick="toggleInstructions()">...(more)</span>
+            <div id="expandedInstructions" style="display: none;">
+              <ol start="4">
+                <li>Experiments can be carried out at ambient temperature, liquid nitrogen temperature and most of the temperatures between liquid nitrogen temperature and 200°C.</li>
+                <li>Experiments can be carried out with samples in liquid, solid or gaseous form, which includes single crystals, metal alloys, liquid crystals, organic radicals, polymers, glasses, powders, triplets, polyradicals, conduction electrons, drugs, rare-earths, enzymes, proteins and gases.</li>
+                <li>Provide a minimum of 25-50 mg of solid sample in powder form.</li>
+                <li>Provide a minimum of 2-3 ml of liquid sample.</li>
+              </ol>
+              <span class="collapse" onclick="toggleInstructions()">(less)</span>
+            </div>
           </td>
         </tr>
       </table>
@@ -296,32 +349,39 @@ table tr {
           <div class="facility-left">
         <table>
           <tr>
-            <td>Location</td>
-            <td>SAIF, Gr. Floor Room No 110</td>
+            <td>Owner</td>
+            <td>Institute Central Research Facility (ICRF)</td>
           </tr>
           <tr>
             <td>Faculty In-Charge/ Convener</td>
             <td>Name: Dr. Mayuri Gandhi<br>Email ID: mngandhi@iitb.ac.in<br>Extension No: 0222576 8692</td>
           </tr>
           <tr>
-            <td>Facility Operator</td>
-            <td>Name: Ms Pradnya Nikam<br>Email ID: esr@iitb.ac.in<br>Phone Number: 022-25764665</td>
+            <td>LAB Email ID and Extension No</td>
+            <td>sonali@iitb.ac.in, 022-25764665</td>
           </tr>
         </table>
           </div>
           <div class="facility-right">
           <table>
           <tr>
-            <td>LAB Email ID and Extension No</td>
-            <td>sonali@iitb.ac.in, 022-25764665</td>
+            <td>Location</td>
+            <td>SAIF, Gr. Floor Room No 110</td>
           </tr>
           <tr>
             <td>Co-convenors</td>
             <td>Name: Dr. G.S Saini<br>Email ID: gssaini@iitb.ac.in<br>Extension No: 0222576 8691</td>
           </tr>
-          <tr>
-            <td>Facility Manager</td>
-            <td>Name: Head, CRNTS<br>Email ID: office.crnts@iitb.ac.in<br>Extension No: 0222576 7691</td>
+          <tr style="border: none;">
+              <td style="column-span: 2; text-align: center;">Facility Members</td>
+              <tr> 
+              <td>Facility Operator</td>
+              <td>Name: Ms Pradnya Nikam<br>Email ID: esr@iitb.ac.in<br>Phone Number: 022-25764665</td>
+              </tr>
+              <tr>
+              <td>Facility Manager</td>
+              <td>Name: Head, CRNTS<br>Email ID: office.crnts@iitb.ac.in<br>Extension No: 0222576 7691</td>
+              </tr>
           </tr>
         </table>
       </div>
@@ -477,17 +537,19 @@ table tr {
 
 <script>
   function toggleInstructions() {
-    const instructionCell = document.getElementById('collapseRow').querySelector('td:last-child');
+    const expandedInstructions = document.getElementById('expandedInstructions');
     const ellipsis = document.querySelector('.ellipsis');
-    if (instructionCell.style.display === 'none') {
-      instructionCell.style.display = 'block';
+    
+    if (expandedInstructions.style.display === 'none') {
+      expandedInstructions.style.display = 'block';
       ellipsis.style.display = 'none';
     } else {
-      instructionCell.style.display = 'none';
+      expandedInstructions.style.display = 'none';
       ellipsis.style.display = 'inline';
     }
   }
-</script>
+  </script>
+
 
 </body>
 </html>
