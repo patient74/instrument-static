@@ -11,7 +11,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: rgba(228, 199, 199, 0.112);
       }
-        .grid-container {
+        /* .grid-container {
         display: grid;
         grid-template-columns: 50% auto auto;
         grid-template-areas:
@@ -25,23 +25,23 @@
         grid-gap: 1px;
         padding: 1px;
         font-size: 17px;
-      }
+      } */
 
-        .grid-item {
+      .grid-item {
         background-color: rgba(224, 208, 208, 0.144);
         padding: 5px;
         text-align: left;
       }
 
       .grid-item h2 {
-        background: linear-gradient(to right, #a52e42, #5fc85f);
+        background:#042f8b;
         color: white;
-        padding: 12px 20px;
+        padding: 10px 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0px;
         font-weight: 700;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-bottom: 20px;
       }
 
@@ -54,21 +54,6 @@
         /* font-size: 20px; */
       }
 
-      .basic-details-grid{
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Two columns */
-        grid-gap: 10px; /* Adjust spacing between columns */
-     }
-
-     .basic-left {
-        grid-column: 1; /* Left column */
-      }
-
-      .basic-right {
-        grid-column: 2; /* Right column */
-      }
-
-  
       .facility {
         grid-area: facility;
       }
@@ -93,7 +78,7 @@
   
       .features {
         grid-area: features;
-}
+      }
    
       .sample {
         grid-area: sample;
@@ -175,8 +160,8 @@
         
       /* Collapsible Sections */
       .collapsible {
-        background-color: rgba(228, 199, 199, 0.112);
-        color: #444;
+        background-color: rgba(255, 255, 255, 0.112);
+        color: #fff;
         cursor: pointer;
         padding: 18px;
         width: 100%;
@@ -189,7 +174,7 @@
       }
 
       .collapsible:before {
-        content: '\02795'; /* Unicode character for "plus" sign (+) */
+        content: '+'; /* Unicode character for "plus" sign (+) */
         font-size: 13px;
         color: #fff;
         position: absolute; /* Position the symbol absolutely */
@@ -200,7 +185,7 @@
 
       .active:before {
         color: #fff;
-        content: "\2796"; /* Unicode character for "minus" sign (-) */
+        content: "-"; /* Unicode character for "minus" sign (-) */
       }
 
       .content {
@@ -309,6 +294,214 @@
           text-align: center; /* Override left alignment */
         }
 
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+  /* .grid-container {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 1200px) 1fr;
+    grid-template-areas:
+        ". header ."
+        ". media-basic ."
+        ". booking ."
+        ". facility ."
+        ". features ."
+        ". sample ."
+        ". lab ."
+        ". publications .";
+    grid-gap: 20px;
+    padding: 20px;
+  } */
+
+  /* .media-basic {
+    grid-area: media-basic;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  } */
+  
+
+  .media { 
+    grid-area: unset; 
+    padding: 0;
+  }
+
+  .basic { 
+    grid-area: unset; 
+  }
+
+
+/* .grid-container {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 1200px) 1fr;
+    grid-template-areas:
+        ". header ."
+        ". media . "
+        ". basic ."
+        ". booking ."
+        ". facility ."
+        ". features ."
+        ". sample ."
+        ". lab ."
+        ". publications .";
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: rgba(224, 208, 208, 0.144);
+    padding: 20px;
+    text-align: left;
+    grid-column: 2;
+}
+
+.header { grid-area: header; }
+.media { 
+    grid-area: media; 
+    padding: 0;
+}
+.basic { grid-area: basic; }
+.booking { grid-area: booking; }
+.facility { grid-area: facility; }
+.features { grid-area: features; }
+.sample { grid-area: sample; }
+.lab { grid-area: lab; }
+.publications { grid-area: publications; } */
+
+/* Updated carousel styles */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.carousel-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-image {
+    width: 50%;
+    height: 70%;
+    object-fit: cover; 
+}
+
+
+.carousel-item video {
+    width: 50%;
+    height: 70%;
+    object-fit: cover;
+}
+
+/* @media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: 1fr minmax(auto, 800px) 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: 1fr minmax(auto, 600px) 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "media"
+            "basic"
+            "booking"
+            "facility"
+            "features"
+            "sample"
+            "lab"
+            "publications";
+    }
+    
+    .grid-item {
+        grid-column: 1;
+    }
+} */
+
+.media { 
+    grid-area: unset; 
+    padding: 0;
+  }
+
+  .basic { 
+    grid-area: unset; 
+  }
+
+  .booking { 
+    grid-area: unset; 
+  }
+
+.grid-container {
+            display: grid;
+            grid-template-columns: 1fr minmax(auto, 1250px) 1fr;
+            grid-template-areas:
+                ". header ."
+                ". media-basic ."
+                ". specs-booking ."
+                ". facility ."
+                ". features ."
+                ". sample ."
+                ". lab ."
+                ". publications .";
+            grid-gap: 5px;
+            padding: 20px;
+        }
+
+        .media-basic {
+            grid-area: media-basic;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 5px;
+        }
+
+        .specs-booking {
+            grid-area: specs-booking;
+            display: grid;
+            grid-template-columns: 0.5fr 1fr;
+            grid-gap: 5px;
+        }
+
+        .media, .basic, .specifications, .booking {
+            padding: 20px;
+            background-color: rgba(224, 208, 208, 0.144);
+        }
+
+        .carousel, .carousel-inner, .carousel-item, .carousel-image , .carousel-item video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
 </style>
 </head>
 <body>
@@ -332,7 +525,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">Home</a>
+                          <a class="nav-link " aria-current="page" href="#">Home</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="#">About</a>
@@ -361,9 +554,10 @@
 </div>
   <div class="grid-container">
     <div class="grid-item header">
-    <h1 style="text-align: center;padding-top: 20px; padding-bottom: 20px;">Electron Spin Resonance Spectrometer (ESR - JEOL)</h1>
+    <h3 style="text-align: center;padding-top: 20px; padding-bottom: 20px;">Electron Spin Resonance Spectrometer (ESR - JEOL)</h3>
     </div>
-    <div class="grid-item media">
+    <div class="media-basic">
+      <div class="media">
       <div class="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -379,9 +573,7 @@
         </div>
       </div>
     </div>
-    <div class="grid-item basic">
-      <div class="basic-details-grid">
-        <div class="basic-left">
+    <div class="basic">
       <table style="border: none;">
         <tr style="border: none;">
           <td>Facility Name</td>
@@ -405,14 +597,20 @@
         </tr>
       </table>
       </div>
-      <div class="basic-right">
+      </div>
+      <div class="specs-booking">
+      <div class="specifications">
       <table style="border: none;">
         <tr style="border: none;">
-          <td style="background: linear-gradient(to right,  #a52e42,#5fc85f);
+          <td style="background:#042f8b ;
           color: white;
-          padding: 12px 20px;
+          padding: 7px 10px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          text-transform: uppercase;">
+          text-transform: uppercase;
+          letter-spacing: 0px;
+          font-weight: 700;
+          font-size: 1rem;
+          margin-bottom: 20px;">
           
           Specifications
         </td>
@@ -433,25 +631,41 @@
             </li>
         </ol>
         </td>
+        <td style="font-weight: bold;">Available modes for use</td>
+        <td>
+          <ul>
+              <li>Room Temperature (Per Sample)</li>
+              <li>Low Temperature (Per Sample)</li>
+              <li>Variable Temperature (Temp. between -140<sup>°</sup>C to +200<sup>°</sup>C may be specified) (Per Temp)</li>
+          </ul>
+      </td>
         </table>
       </div>
-    </div>
-    </div>
-    <div class="grid-item booking">
-      <h2>Booking details</h2>
+      <div class="booking">
+      <h2 style="background:#042f8b;
+      color: white;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-transform: uppercase;
+      letter-spacing: 0px;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 20px;">Booking details</h2>
       <table>
-        <tr>
-          <td>Booking available for</td>
-          <td>Both Internal and External Users</td>
-        </tr>
-        <tr>
-          <td>Slot Booking URL</td>
-          <td><a href="https://www.saif.iitb.ac.in">www.saif.iitb.ac.in</a></td>
+        <tr style="display: flex; margin-bottom: 20px;">
+          <td style="flex: 1; padding: 10px;">
+            <div style="font-weight: bold; margin-bottom: 0px;">Booking available for</div>
+            <div style="font-weight: lighter;">Both Internal and External Users</div>
+          </td>
+          <td style="flex: 1; padding: 10px; margin-left: 120px;">
+            <div style="font-weight: bold; margin-bottom: 0px;">Slot Booking URL</div>
+            <div><a href="https://www.saif.iitb.ac.in">www.saif.iitb.ac.in</a></div>
+          </td>
         </tr>
         <tr>
           <td colspan="2">
             <h6 style="font-weight: bold;">Charges</h6>
-            <table class="charges-table">
+            <table class="charges-table", style="font-weight: 100;">
               <tr>
                 <th></th>
                 <th></th>
@@ -471,13 +685,6 @@
                 <td>Per Sample</td>
               </tr>
             </table>
-          </td>
-        </tr>
-        <tr>
-          <td>Available modes for use</td>
-          <td>Room Temperature (Per Sample)<br/>
-              Low Temperature (Per Sample)<br/>
-              Variable Temperature (Temp. between -140<sup>°</sup>C to +200<sup>°</sup>C may be specified) (Per Temp)
           </td>
         </tr>
         <tr id="collapseRow">
@@ -501,6 +708,7 @@
           </td>
         </tr>
       </table>
+    </div>
     </div>
     <div class="grid-item facility">
         <h2>Facility details</h2>
@@ -548,9 +756,9 @@
     </div>
       <div class="grid-item features">
         <h2>Features and Working Principle</h2>
-        <h3>Applications</h3>
+        <p style="font-weight: bold;">Applications</p>
         <p>Electron Spin Resonance, ESR, is a powerful non-destructive and non-intrusive analytical method. ESR yields meaningful structural information even from ongoing chemical or physical processes, without influencing the process itself. It is the ideal technique to complement other analytical methods in a wide range of application areas.</p>
-        <h3>User Instructions and Precautionary Measures</h3>
+        <p style="font-weight: bold;">User Instructions and Precautionary Measures</p>
         <ol>
             <li>Clearly mention state the model of ESR Spectrometer for your sample analysis.</li>
             <li>Analysis charges would vary depending on model selection. Relevant charges are given under each model.</li>
